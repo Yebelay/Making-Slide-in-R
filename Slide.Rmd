@@ -32,17 +32,15 @@ library(icons)
 
 
 ```{r xaringanExtra, include = FALSE}
-xaringanExtra::use_xaringan_extra(c("tile_view", "webcam", "editable", "panelset","scribble", "fit_screen", "share_again"))
+xaringanExtra::use_xaringan_extra(c("tile_view", "webcam", "editable", "panelset","scribble", "fit_screen"))
+ xaringanExtra::use_search(show_icon = TRUE)
+#xaringanExtra::style_share_again(
+# share_buttons = c("email", "linkedin", "twitter"),  # Corrected "twiter" to "twitter"
+#  foreground = "orange", background = "blue")
 
-xaringanExtra::style_share_again(
-  share_buttons = c("email", "linkedin", "twitter"),  # Corrected "twiter" to "twitter"
-  foreground = "orange",
-  background = "blue"
-)
+#xaringanExtra::use_banner(bottom_center = "yebelay.berehan@c4ed.org")
+#xaringanExtra::style_banner(text_color = "red")
 
-xaringanExtra::use_banner(bottom_center = "yebelay.berehan@c4ed.org")
-xaringanExtra::style_banner(text_color = "red")
-xaringanExtra::use_search(show_icon = TRUE)
 
 ```
 
@@ -51,11 +49,12 @@ class: inverse middle
 
 # Outlines
 
-- [General introduction to R markdown🐣](# General introduction to R markdown🐣)
+- General introduction to R markdown🐣
 
-- [Making presentation slide using xaringan template📝](#  Making presentation slide using xaringan template📝)
+- Making presentation slide using xaringan template📝 
 
-- [Create presentation using C4ED template 🤹](# Create presentation using C4ED template 🤹)
+- Create presentation using C4ED template 🤹
+
 
 ---
 
@@ -483,11 +482,6 @@ This content is also centered and in the middle of the slide
 ]
 
 ---
-
-# Make slides look more interesting: <span style="color:orange">Adding colors</span>
-
-
----
 class: inverse left middle
 
 # How to add images to your slides pictures
@@ -497,6 +491,7 @@ class: inverse left middle
 - Integrate R plots to the slide
 
 ---
+class: inverse left top
 
 # insert image from local or external sources
 
@@ -549,10 +544,23 @@ knitr::include_graphics("img/fig.png")
 - takes time to [get used to syntax](https://www.w3schools.com/html/html_images.asp)
 ]
 .pull-right[
-
 <img src="img/fig.png" width="90%"/>
-
 ]
+]
+
+.panel[.panel-name[Full background image]
+
+- Use the [`background-image` `property´](https://github.com/gnab/remark/wiki/Markdown#background-image) right after slide break (<span style="color:orange">`---`):
+
+- <span style="color:orange">`background-image: url("actual url or file path here")`</span>
+- <span style="color:orange">`background-size: cover` </span>--> will cover the slide so that there is no white space.
+- <span style="color:orange">`background-position:`</span> play with [this](https://www.w3schools.com/cssref/pr_background-position.asp)
+
+```
+class: inverse
+background-image: url("https://media.giphy.com/media/giphy.gif")
+background-size: cover
+```
 ]
 ]<!---->
 
@@ -622,11 +630,11 @@ class: inverse left top
 
 The new directory in the "Files" pane contains
 .left[
-+ `r fontawesome::fa("file-code")` the new Rmd file (i.e. `Xaringan Slide.Rmd`)
++ `r fontawesome::fa("file-code")` the new Rmd file (i.e. <span style="color:orange">`Xaringan Slide.Rmd`</span>)
 
-+ `r fontawesome::fa("folder-open")` the `img` folder containing logo files
++ `r fontawesome::fa("folder-open")` the <span style="color:orange">`img`</span> folder containing logo files
 
-+ `r fontawesome::fa("folder-open")` the `css` folder containing the custom `C4ED` theme files and an HTML file in charge of adding the c4ed logo to each slide.
++ `r fontawesome::fa("folder-open")` the <span style="color:orange">`css`</span> folder containing the custom <span style="color:orange">`C4ED`</span> theme files and an HTML file in charge of adding the c4ed logo to each slide.
 ]
 ] 
 
@@ -704,33 +712,20 @@ More options for output `xaringan::moon_reader`
 ] 
 
 .panel[.panel-name[c4ed2]
-[c4ed_theme.css](C:\Users\YebelayBerehan\Making Slide in R\c4ed_theme.css)
+
+- The customized CSS to c4ed theme is found in the following link
+[c4ed_theme.css](https://github.com/Yebelay/Making-Slide-in-R/blob/main/c4ed_theme.css)
 
 ] 
 ] 
 
 ---
 
-# Full image slides
-
-
-- Use the [`background-image` property](https://github.com/gnab/remark/wiki/Markdown#background-image) right after slide break (`---`):
-
-- `background-image: url("actual url or file path here")`
-- `background-size: cover` --> image is scaled to fit into the slide.
-- `background-position:` play with [this](https://www.w3schools.com/cssref/pr_background-position.asp)
-
-```
-class: inverse
-background-image: url("https://media.giphy.com/media/giphy.gif")
-background-size: cover
-```
-
----
 
 # Table
 ```{r, warning=FALSE, message=FALSE}
 library(DT) # Create an interactive data table
+
 datatable(iris, options = list(pageLength = 10))
 ```
 
@@ -783,7 +778,8 @@ to_pptx(from = "Slide.html",
   keep_intermediates = TRUE)
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE}
+library(renderthis)
 to_pdf( "Slide.html",
   complex_slides = TRUE,
   delay = 1,
