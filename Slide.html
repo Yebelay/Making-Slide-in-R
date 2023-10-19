@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Making a Presentation in R Using c4ed theme: Xaringan</title>
+    <meta charset="utf-8" />
+    <meta name="date" content="2023-10-19" />
+    <script src="Slide_files/header-attrs/header-attrs.js"></script>
+    <link href="Slide_files/remark-css/default.css" rel="stylesheet" />
+    <link href="Slide_files/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="Slide_files/tile-view/tile-view.js"></script>
+    <script src="Slide_files/xaringanExtra_fit-screen/fit-screen.js"></script>
+    <link href="Slide_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="Slide_files/panelset/panelset.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x35b9d16ef704879a928b3caef47b617","expires":14}</script>
+    <script src="Slide_files/himalaya/himalaya.js"></script>
+    <script src="Slide_files/js-cookie/js.cookie.js"></script>
+    <link href="Slide_files/editable/editable.css" rel="stylesheet" />
+    <script src="Slide_files/editable/editable.js"></script>
+    <script src="Slide_files/xaringanExtra-webcam/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <script src="Slide_files/clipboard/clipboard.min.js"></script>
+    <link href="Slide_files/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="Slide_files/shareon/shareon.min.js"></script>
+    <link href="Slide_files/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="Slide_files/xaringanExtra-shareagain/shareagain.js"></script>
+    <script src="Slide_files/fabric/fabric.min.js"></script>
+    <link href="Slide_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="Slide_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="Slide_files/xaringanExtra-banner/banner.css" rel="stylesheet" />
+    <script src="Slide_files/xaringanExtra-banner/banner.js"></script>
+    <script src="Slide_files/mark.js/mark.min.js"></script>
+    <link href="Slide_files/xaringanExtra-search/search.css" rel="stylesheet" />
+    <script src="Slide_files/xaringanExtra-search/search.js"></script>
+    <script>window.addEventListener('load', function() { window.xeSearch = new RemarkSearch({"position":"bottom-left","caseSensitive":false,"showIcon":true,"autoSearch":true}) })</script>
+    <script src="Slide_files/htmlwidgets/htmlwidgets.js"></script>
+    <link href="Slide_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="Slide_files/datatables-binding/datatables.js"></script>
+    <script src="Slide_files/jquery/jquery-3.6.0.min.js"></script>
+    <link href="Slide_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="Slide_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="Slide_files/dt-core/js/jquery.dataTables.min.js"></script>
+    <link href="Slide_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
+    <script src="Slide_files/crosstalk/js/crosstalk.min.js"></script>
+    <link rel="stylesheet" href="c4ed_theme.css" type="text/css" />
+    <link rel="stylesheet" href="css/fonts_c4ed.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Making a Presentation in R Using c4ed theme: Xaringan
+]
+.subtitle[
+## Center for Evaluation and Devlopment(C4ED) Using c4ed theme
+]
+.author[
+### <div class="line-block">Yebelay Berehan, (<span style="color:red">Survey Manager</span>)</div>
+]
+.date[
+### October 19, 2023
+]
+
+---
+
+
+
+
+
+
+
+
+class: inverse middle
+
+# Outlines
+
+- [General introduction to R markdown🐣](# General introduction to R markdown🐣)
+
+- [Making presentation slide using xaringan template📝](#  Making presentation slide using xaringan template📝)
+
+- [Create presentation using C4ED template 🤹](# Create presentation using C4ED template 🤹)
+
+---
+
+# General introduction to R markdown🐣
+
+## Packages for making presentation in R
+
+1. **`rmarkdown`:** Creates dynamic reports and documents by blending code and text.
+2. **`knitr`:** Embeds and executes R code within R Markdown, generating tables and plots.
+3. **`tinytex`:** Simplifies LaTeX package management for high-quality documents.
+4. **`xaringan`:** Builds interactive web-based presentations using R Markdown.
+5. **`xaringanthemer`:** Customizes themes and styles for Xaringan presentations.
+6. **`xaringanExtra`:** Enhances Xaringan presentations with features like slide notes and transitions.
+
+
+
+```r
+packs &lt;- c(rmarkdown, knitr, tinytex, xaringan, xaringanExtra,
+           xaringanthemer)
+install.packages("packs")
+```
+
+---
+
+# Creating an R project 🐣
+
+- Create a new R Project from within R Studio
+
+![](img/openRProj.png)
+
+---
+
+ - Save in new directory 
+.pull-left[
+&lt;img src="img/newdir.png" width="300px" height="200px" &gt;
+]
+.pull-right[
+&lt;img src="img/newprojinnewdir.png" width="500px" height="200px" &gt;
+]
+ 
+- Choose the folder where you want to store your R Markdown file
+
+&lt;img src="img/browse.png" width="400px" height="200px" &gt;
+
+
+---
+
+- In that new folder, create an R Markdown file
+.pull-left[
+&lt;img src="img/creatermark.png" width="400px" height="120px" &gt;
+]
+.pull-right[
+- File ➡️ New File ➡️ R Markdown ➡️ Click OK
+]
+-  When you knit, the following happens:
+
+&lt;img src="https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png" style="width: 800px; height: 80px;" alt="Image Description"&gt;
+
+- knit executes the code if there is any, converts the resulting document from `.Rmd (R Markdown)` into `.md (Markdown)`
+- pandoc transforms the `.md document` into your preferred output format(s) (e.g., word, pdf, html)
+ 
+---
+
+# The YAML header
+
+YAML includes the metadata variables
+- e.g., title, output format    
+- written between a pair of three hyphens .blue-h[-]
+
+```r
+*---
+title: 
+output:
+*---
+```
+
+--
+
+- Typical **YAML variables** for any output format:
+
+
+```r
+---
+title: 
+author: 
+date: 
+output: 
+---
+```
+
+---
+
+# YAML &amp;mdash; Variables
+
+- Variables can be provided as strings, options, sub-options, and code
+
+
+```r
+---
+title: "My very funny first slide"
+output: 
+    pdf_document:
+        keep_tex: true
+*date: "`r Sys.Date()`"
+---
+```
+
+- Documents as output formats include
+
+.pull-left[
+
+```r
+---
+*output: html_document
+*output: latex_document
+*output: pdf_document
+*output: word_document
+---
+```
+]
+.pull-right[
+- HTML
+- LaTeX
+- PDF
+- Word
+]
+
+
+---
+ 
+# Headers
+
+- The number sign &lt;span style="color:red"&gt; # &lt;/span&gt; introduces headers; lower levels are created with additional &lt;span style="color:red"&gt; # &lt;/span&gt; &amp;mdash; up to total four levels
+
+.pull-left[
+```{}
+# Introduction
+## Introduction
+### Introduction
+#### Introduction
+
+```
+]
+
+.pull-right[
+
+# Introduction
+## Introduction
+### Introduction
+#### Introduction
+##### Introduction
+]
+
+### Emphases
+
+- A pair of single asterisk .blue-h[&amp;#42;] or underscores .blue-h[&amp;#95;] introduces italics
+- &lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#42;italics&amp;#42;&lt;/span&gt; or &lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#95;italics&amp;#95;&lt;/span&gt; becomes .out-t[*italics*]    
+- A pair of double asterisk or underscores introduces bold  
+- &lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#42;&amp;#42;bold&amp;#42;&amp;#42;&lt;/span&gt; or &lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#95;&amp;#95;bold&amp;#95;&amp;#95;becomes .out-t[**bold**]
+
+---
+ 
+# Equations
+
+Inline equations go between a pair of single dollar signs "$" with no space between the signs and the equation itself
+
+.inline-c[$E = mc^{2}$] becomes .out-t[*E = mc&lt;sup&gt;2&lt;/sup&gt;*]
+
+Block equations go in between a pair of double dollar signs 
+
+.inline-c[&amp;#x24;&amp;#x24;E = mc^{2}].inline-c[&amp;#x24;&amp;#x24;] becomes
+
+
+.out-t[
+
+&lt;center&gt; &lt;i&gt; E = mc&lt;sup&gt;2&lt;/sup&gt; &lt;/i&gt; &lt;/center&gt;
+
+]
+
+.pull-left[
+```
+$$Y=\beta_0+\beta_1x^2+\epsilon$$
+$$\bar{x}=\frac{\sum_{i=1}^n x_i}{n}$$
+```
+]
+
+.pull-right[
+`$$Y=\beta_0+\beta_1x+\beta_2x^2+\epsilon$$`
+`$$\bar{x}=\frac{\sum_{i=1}^n x_i}{n}$$`
+]
+
+---
+ 
+# Lists
+
+Lines starting with asterisk .yellow-h[&amp;#42;] as well as plus .yellow-h[&amp;#43;] or minus .yellow-h[&amp;#8722;] signs introduce lists
+.pull-left[
+
+```r
+- books
+- articles
+- reports
+```
+]
+.pull-right[
+
+- books
+- articles
+- reports
+]
+
+- Lists can be numbered, nested within each other, with indentation
+
+.pull-left[
+
+```r
+1. books
+2. articles
+    - published
+    - under review
+        + revised and resubmitted
+    - work in progress
+```
+]
+.pull-right[
+1. books
+2. articles
+   - published
+   - under review
+      + revised and resubmitted
+   - work in progress
+]
+
+---
+ 
+.pull-left[### .fancy[Dashes]
+
+- Two hyphens grouped together introduce small dash
+  - .inline-c[&amp;#8208;&amp;#8208;] becomes &lt;span style="color:red"&gt;.out-t[&amp;ndash;]&lt;/span&gt;
+
+- Three hyphens grouped together introduce bbiger dash
+  - .inline-c[&amp;#8208;&amp;#8208;&amp;#8208;] becomes &lt;span style="color:red"&gt;.out-t[&amp;mdash;]&lt;/span&gt;
+]
+
+.pull-right[### .fancy[Subscripts and Superscripts]
+
+- underscore (`_`) introduces subscript
+  - $ CO_2 $ becomes `\(CO_2\)`
+- `^` introduces superscript
+  - R^2  becomes `\(R^2\)`
+]
+
+--------------------------------------------------------------------------
+
+---
+
+#  Making presentation slide using xaringan template📝
+
+* Xaringan = shar-in-gen or [ʃæ.ˈriŋ.gæn], which is created by [Yihui Xie](https://yihui.org/) 
+* Install the package from GitHub
+
+```r
+remotes::install_github("yihui/xaringan")
+```
+* In RStudio: Make a new project
+* File ➡️ New File ➡️ R Markdown ➡️ From Template ➡️ Ninja Presentation
+
+- Delete everything but YAML
+- Save. (save, save, save!)
+
+---
+
+# Then the YAML page 
+.pull-left[
+
+```r
+knitr::include_graphics("img/Ninja.png")
+```
+
+&lt;img src="img/Ninja.png" width="1109" /&gt;
+
+]
+.pull-right[
+
+```r
+---
+title: "Presentation Ninja"
+subtitle: "⚔&lt;br/&gt;with xaringan"
+author: "Yihui Xie"
+institute: "RStudio, PBC"
+date: "2016/12/12(updated:`r Sys.Date()`)"
+output:
+  xaringan::moon_reader: # output format
+nature:
+  highlightStyle:  # how the code displays
+  highlightLines: true 
+countIncrementalSlides: false
+#ratio "16:9" # or 4:3
+---
+```
+]
+---
+
+- To view the slides generated by your new Rmd file, you have two options:
+
+**Option 1**. Run xaringan's infinite moon reader function in the console 🚀 
+
+```r
+xaringan::inf_mr()
+```
+
+**Option 2**. Knit the document 🧶 
+
+
+---
+
+# xaringan syntax
+
+.pull-left[
+
+### Familiar from **markdown**
+
+- Headings (#, ##, ###)
+- **Bold** and _italic_ type
+- Links and images with `[]()` and `![]()`
+- Bullet points can be added with 
+&lt;br&gt;`-`, `+`, or `*`
+- Numbered lists can be created with `1.`
+]
+
+--
+
+.pull-right[
+### Not so familiar, from **remark.js**
+- First slide starts immediately after YAML, doesn't need to begin with three dashes(`---`)
+- Slides are separated by three dashes &lt;br&gt;(`---`)
+- Incremental slides are separated by two dashes (`--`)
+]
+
+---
+
+class: inverse left middle
+
+# How can we make our slides look more interesting?
+
+by adjusting 
+- Placement of texts 
+- pretty pictures
+- and icons
+
+---
+
+# Make slides look more interesting: &lt;span style="color:orange"&gt;Align an entire slide&lt;/span&gt;
+
+.pull-left[
+Horizontally
+```r
+left,
+*center,
+right
+```
+]
+
+.pull-right[
+Vertically
+```r
+top, 
+*middle, 
+bottom 
+```
+]
+
+```r
+---
+*class: center, middle
+This content is also centered and in the middle of the slide 
+---
+```
+- Slide with some text aligned
+```r
+.right[...and finish it on the right.]
+```
+.right[...and finish it on the right.]
+
+---
+
+# Make slides look more interesting: &lt;span style="color:orange"&gt;Placement&lt;/span&gt;
+
+- Pull content to either side of the slide
+
+.pull-left[
+
+- **&lt;span style="color:#186F65"&gt; The `.pull-left[]` class pulls content to the left 47%&lt;/span&gt;**
+
+```{
+.pull-left[
+&lt;img src="img/fig1.png" width="25%"/&gt;
+]
+```
+&lt;img src="img/hex-rmarkdown.png" width="25%"/&gt;
+]
+
+.pull-right[
+
+- &lt;span style="color:blue"&gt;And `.pull-right[]` pulls content to the right 47%&lt;/span&gt;
+```{r
+.pull-right[
+&lt;img src="img/fig.png" width="25%"/&gt;
+]
+```
+&lt;img src="img/hex-xaringan.png" width="25%" /&gt;
+]
+
+- They don't have to take up the entire slide. Like for this text, you can decide to continue creating content that isn't pulled to either side.
+
+---
+
+# Make slides look more interesting: &lt;span style="color:orange"&gt;two-column layout&lt;/span&gt;
+
+
+.left-column[
+**`.left-column[]` places content into a column 20% wide**
+- And text is a little lighter
+]
+
+--
+
+.right-column[
+**`.right-column[]` places content into a column 75% wide**
+- It also has a _little_ bit of padding on the top
+
+- And unlike the `.pull` content classes, these column classes are fixed for the entire slide
+- They are meant to be used together
+
+.center.small-image[
+&lt;img src="img/hex-xaringan.png" width="22%"/&gt;
+]
+]
+
+---
+
+# Make slides look more interesting: &lt;span style="color:orange"&gt;Adding colors&lt;/span&gt;
+
+
+---
+class: inverse left middle
+
+# How to add images to your slides pictures
+
+- Insert image from local or external sources 
+
+- Integrate R plots to the slide
+
+---
+
+# insert image from local or external sources
+
+- There are a variety of ways to add images to your slides!
+
+.panelset[
+.panel[.panel-name[Markdown]
+
+.pull-left[
+
+```r
+![](img/fig.png)
+```
+
+- simple
+- not very flexible
+- output size fully dependent on the size of the image, but scaling can be manage
+]
+
+.pull-right[
+![](img/fig.png)]
+
+] &lt;!----&gt;
+
+.panel[.panel-name[knitr]
+
+.pull-left[
+
+
+```r
+knitr::include_graphics("img/fig.png")
+```
+- pretty flexible
+- a little bulky
+]
+
+.pull-right[
+&lt;img src="img/fig.png" width="100%" /&gt;
+]
+] &lt;!----&gt;
+
+.panel[.panel-name[HTML]
+.pull-left[
+
+```html
+&lt;img src="img/fig.png" width="90%"/&gt;
+```
+- most flexible
+- a bit unsightly
+- takes time to [get used to syntax](https://www.w3schools.com/html/html_images.asp)
+]
+.pull-right[
+
+&lt;img src="img/fig.png" width="90%"/&gt;
+
+]
+]
+]&lt;!----&gt;
+
+---
+# visualize our data using r code 
+
+.panelset[
+
+.panel[.panel-name[plot]
+
+&lt;img src="Slide_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+.panel[.panel-name[R code]
+
+
+```r
+library(ggplot2)
+library(palmerpenguins)
+   ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g, color = sex)) +  
+   geom_point() + theme_bw()+
+  scale_color_manual(values = c("darkorange", "cyan4"), na.translate = FALSE) +
+  labs(title = "Penguin flipper and body mass") +
+  labs(x = "Flipper length (mm)",  y = "Body mass (g)",
+       color = "Penguin sex")  #  facet_wrap(~ species) 
+```
+
+]
+.panel[.panel-name[Chunk Code]
+![](img\code-setup-chunk.png)
+]
+
+]
+
+
+---
+
+class: inverse left top
+
+# Create presentation using C4ED template 🤹
+
+.panelset[
+
+.panel[.panel-name[New Rmd File]
+.pull-left[
+1. New File
+2. New R Markdown
+![](img/creatermark.png)
+]
+
+.pull-right[
+3\. From Template 
+![](img/Ninja.png)
+]
+]&lt;!----&gt;
+
+.panel[.panel-name[Directory]
+
+The new directory in the "Files" pane contains
+.left[
++ <svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm97 289c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L79 303c-9.4 9.4-9.4 24.6 0 33.9l48 48c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-31-31 31-31zM257 255c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l31 31-31 31c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l48-48c9.4-9.4 9.4-24.6 0-33.9l-48-48z"/></svg> the new Rmd file (i.e. `Xaringan Slide.Rmd`)
+
++ <svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M384 480h48c11.4 0 21.9-6 27.6-15.9l112-192c5.8-9.9 5.8-22.1 .1-32.1S555.5 224 544 224H144c-11.4 0-21.9 6-27.6 15.9L48 357.1V96c0-8.8 7.2-16 16-16H181.5c4.2 0 8.3 1.7 11.3 4.7l26.5 26.5c21 21 49.5 32.8 79.2 32.8H416c8.8 0 16 7.2 16 16v32h48V160c0-35.3-28.7-64-64-64H298.5c-17 0-33.3-6.7-45.3-18.7L226.7 50.7c-12-12-28.3-18.7-45.3-18.7H64C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H87.7 384z"/></svg> the `img` folder containing logo files
+
++ <svg aria-hidden="true" role="img" viewBox="0 0 576 512" style="height:1em;width:1.12em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M384 480h48c11.4 0 21.9-6 27.6-15.9l112-192c5.8-9.9 5.8-22.1 .1-32.1S555.5 224 544 224H144c-11.4 0-21.9 6-27.6 15.9L48 357.1V96c0-8.8 7.2-16 16-16H181.5c4.2 0 8.3 1.7 11.3 4.7l26.5 26.5c21 21 49.5 32.8 79.2 32.8H416c8.8 0 16 7.2 16 16v32h48V160c0-35.3-28.7-64-64-64H298.5c-17 0-33.3-6.7-45.3-18.7L226.7 50.7c-12-12-28.3-18.7-45.3-18.7H64C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H87.7 384z"/></svg> the `css` folder containing the custom `C4ED` theme files and an HTML file in charge of adding the c4ed logo to each slide.
+]
+] 
+
+.panel[.panel-name[YAML 1]
+
+```r
+---
+title: "Making a Presentation in R Using c4ed theme: Xaringan"
+subtitle: "Center for Evaluation and Devlopment(C4ED) Using c4ed theme" 
+#institution: " " 
+author: "Yebelay Berehan"
+date: "`r stringr::str_replace(format(Sys.time(), '%B %d, %Y'), '^0','')`"
+output: 
+  xaringan::moon_reader:
+    css:
+      - default
+      - c4ed_theme.css
+      - css/fonts_c4ed.css
+```
+] 
+
+.panel[.panel-name[YAML 2]
+More options for output `xaringan::moon_reader`
+
+```r
+    nature: 
+      highlightStyle: github   # highlighting syntax for code
+      highlightLines: true     # true: enables code line highlighting
+      countIncrementalSlides: false # incremet not counted as page
+      highlightLanguage: ["r"]       # languages to highlight
+      countdown: 60000  # add time count for each slide
+      ratio: "16:10" # or 16:9  # size of slide
+    includes:
+      after_body: [css/insert-logo.html]   # include logos to each page
+---
+```
+] &lt;!----&gt;
+
+.panel[.panel-name[c4ed1]
+.pull-left[
+```{}
+.remark-slide-content {
+  background-color: #FFFFFF;
+  border-top: 70px solid #006D6B;
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 1.5;
+  padding: 1em 2em 1em 2em;
+}
+.title-slide {
+  background-image: url(img/logo-title-slide.png), 
+  url(img/fig.png);
+  background-size: 200px auto, 100% 200px;
+  background-position: 90% 5%, bottom;
+  background-repeat: no-repeat;
+}
+
+```
+
+]
+.pull-right[
+```{}
+/* colored to white for slides that have both
+   the .title-slide and .inverse classes.*/
+.title-slide .inverse .remark-slide-content {
+  background-color: #ffffff;
+  color: #ffffff; /* Set the text color to white */
+}
+/*--Make color the inverse slide -- */
+.inverse {
+  background-color: #006D6B;
+  text-shadow: none;
+}
+
+```
+]
+] 
+
+.panel[.panel-name[c4ed2]
+[c4ed_theme.css](C:\Users\YebelayBerehan\Making Slide in R\c4ed_theme.css)
+
+] 
+] 
+
+---
+
+# Full image slides
+
+
+- Use the [`background-image` property](https://github.com/gnab/remark/wiki/Markdown#background-image) right after slide break (`---`):
+
+- `background-image: url("actual url or file path here")`
+- `background-size: cover` --&gt; image is scaled to fit into the slide.
+- `background-position:` play with [this](https://www.w3schools.com/cssref/pr_background-position.asp)
+
+```
+class: inverse
+background-image: url("https://media.giphy.com/media/giphy.gif")
+background-size: cover
+```
+
+---
+
+# Table
+
+```r
+library(DT) # Create an interactive data table
+datatable(iris, options = list(pageLength = 10))
+```
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9b5d0f1d4f3988feedf7" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9b5d0f1d4f3988feedf7">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+
+---
+
+# Keyboard shortcuts
+
+.pull-left[
+- **&lt;span style="color:orange"&gt;k&lt;/span&gt;**	 **&lt;span style="color:#006D6B"&gt; Go to previous slide&lt;/span&gt;**
+
+- **&lt;span style="color:orange"&gt;j&lt;/span&gt;**	**&lt;span style="color:#006D6B"&gt;Go to next slide&lt;/span&gt;**
+
+- **&lt;span style="color:orange"&gt;b&lt;/span&gt;** **&lt;span style="color:#006D6B"&gt;Toggle blackout&lt;/span&gt;**
+
+- **&lt;span style="color:orange"&gt;m&lt;/span&gt;** **&lt;span style="color:#006D6B"&gt;Toggle mirrored &lt;/span&gt;**
+
+- **&lt;span style="color:orange"&gt;f&lt;/span&gt;**	**&lt;span style="color:#006D6B"&gt;Toggle fullscreen mode&lt;/span&gt;**
+
+- **&lt;span style="color:orange"&gt;c&lt;/span&gt;**	**&lt;span style="color:#006D6B"&gt;Clone slideshow&lt;/span&gt;**
+]
+
+.pull-right[
+- **&lt;span style="color:orange"&gt;p&lt;/span&gt;**	**&lt;span style="color:#006D6B"&gt;Toggle presenter mode&lt;/span&gt;**
+
+- **&lt;span style="color:orange"&gt;t&lt;/span&gt;**	**&lt;span style="color:#006D6B"&gt;Restart the presentation timer&lt;/span&gt;**
+
+- **&lt;span style="color:orange"&gt;?, h&lt;/span&gt;**	**&lt;span style="color:#006D6B"&gt;Toggle this help&lt;/span&gt;**
+
+- **&lt;span style="color:orange"&gt;o&lt;/span&gt;**	**&lt;span style="color:#006D6B"&gt;Tile View: Overview of Slides&lt;/span&gt;**
+
+- **&lt;span style="color:red"&gt;f&lt;/span&gt;**	**&lt;span style="color:#006D6B"&gt;Fit Slides to Screen&lt;/span&gt;**
+
+- **&lt;span style="color:red"&gt;s&lt;/span&gt;**	**&lt;span style="color:#006D6B"&gt;Toggle scribble toolbox&lt;/span&gt;**
+
+- **&lt;span style="color:red"&gt;w&lt;/span&gt;** **&lt;span style="color:#006D6B"&gt;open webcam &lt;/span&gt;**
+]
+
+---
+
+class: inverse
+background-image: url(https://media.giphy.com/media/cSiauzNn8OBLGq7Y1C/giphy.gif)
+background-size: cover
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"highlightLanguage": "r",
+"slideNumberFormat": "%current%",
+"ratio": "16:10"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<style>
+.logo {
+  background-image: url(img/logo-blue.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0.07em;
+  right: 1em;
+  width: 90px;
+  height: 100px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
