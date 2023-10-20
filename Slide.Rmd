@@ -322,7 +322,7 @@ remotes::install_github("yihui/xaringan")
 # Then the YAML page 
 .pull-left[
 
-<img src="img/Ninja1.PNG" width="400px" height="400px" >
+<img src="img/Ninja2.jpg" width="400px" height="400px" >
 
 ]
 .pull-right[
@@ -633,7 +633,7 @@ class: inverse left top
 
 .pull-right[
 3\. From Template 
-![](Ninja1.PNG)
+![](img/Ninja2.jpg)
 ]
 ]<!---->
 
