@@ -321,9 +321,8 @@ remotes::install_github("yihui/xaringan")
 
 # Then the YAML page 
 .pull-left[
-```{r}
-knitr::include_graphics("img/Ninja.png")
-```
+
+<img src="img/Ninja.png" width="400px" height="400px" >
 
 ]
 .pull-right[
