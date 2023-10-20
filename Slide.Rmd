@@ -32,7 +32,7 @@ library(icons)
 
 
 ```{r xaringanExtra, include = FALSE}
-xaringanExtra::use_xaringan_extra(c("tile_view", "webcam", "editable", "panelset","scribble", "fit_screen"))
+xaringanExtra::use_xaringan_extra(c("tile_view", "webcam", "editable", "panelset","scribble", "fit_screen", "clipboard"))
  xaringanExtra::use_search(show_icon = TRUE)
 #xaringanExtra::style_share_again(
 # share_buttons = c("email", "linkedin", "twitter"),  # Corrected "twiter" to "twitter"
@@ -610,6 +610,36 @@ library(palmerpenguins)
 ```{r, warning=FALSE, message=FALSE}
 library(leaflet)
 leaflet() %>% addTiles() %>% setView(lng = 40.489673, lat = 9.1450, zoom = 3)
+```
+]
+
+.panel[.panel-name[Interactive plot1]
+
+```{r, fig.showtext = TRUE,fig.align='center', echo=FALSE, warning=FALSE, message=FALSE, fig.width= 10, fig.height=6}
+library(plotly);library(ggplot2)
+library(palmerpenguins)
+plot <- ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g, color = sex)) +  geom_point() + theme_bw()+
+  scale_color_manual(values = c("darkorange", "cyan4"), na.translate = FALSE) +
+  labs(title = "Penguin flipper and body mass") +
+  labs(x = "Flipper length (mm)", y = "Body mass (g)",
+       color = "Penguin sex")  #  facet_wrap(~ species) 
+ggplotly(plot)
+```
+
+]
+.panel[.panel-name[Interactive plot2]
+
+```{r, echo=FALSE,fig.align='center', echo=FALSE, warning=FALSE, message=FALSE, fig.width= 10, fig.height=5}
+library(plotly)
+library(dplyr)
+set.seed(123)
+df <- diamonds[sample(1:nrow(diamonds), size = 1000),]
+df.summ <- df %>% group_by(cut) %>% summarize(Mean = mean(table), Min = min(table), Max = max(table))
+p <- ggplot(df.summ, aes(x = cut, y = Mean, ymin = Min, ymax = Max, fill = cut)) +  geom_bar(stat = "identity") + 
+  geom_errorbar() + 
+  ggtitle("Bar chart with Error Bars")
+
+ggplotly(p)
 ```
 ]
 ]
