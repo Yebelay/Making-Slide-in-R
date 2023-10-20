@@ -548,23 +548,31 @@ knitr::include_graphics("img/fig.png")
 ]
 ]
 
-.panel[.panel-name[Full background image]
-
-- Use the [`background-image` `property´](https://github.com/gnab/remark/wiki/Markdown#background-image) right after slide break (<span style="color:orange">`---`):
-
-- <span style="color:orange">`background-image: url("actual url or file path here")`</span>
-- <span style="color:orange">`background-size: cover` </span>--> will cover the slide so that there is no white space.
-- <span style="color:orange">`background-position:`</span> play with [this](https://www.w3schools.com/cssref/pr_background-position.asp)
-
-```
-class: inverse
-background-image: url("https://media.giphy.com/media/giphy.gif")
-background-size: cover
-```
-]
 ]<!---->
 
 ---
+background-image: url("img/fullimage.png")
+background-size: 100%
+
+class: middle left
+
+# Full background image
+
+
+- <span style="color:white">For example I use the this code for this background image.</span>
+
+
+```
+background-image: url("img/fullimage.png")
+background-size: cover
+```
+
+- <span style="color:red">`background-size: cover`</span> <span style="color:white"> --> will cover the slide so that there is no white space.</span>
+- <span style="color:red">`background-position:`</span> <span style="color:white"> play with [this](https://www.w3schools.com/cssref/pr_background-position.asp)</span>
+
+
+---
+
 # visualize our data using r code 
 
 .panelset[
@@ -601,9 +609,13 @@ library(palmerpenguins)
 .panel[.panel-name[Chunk Code]
 ![](img\code-setup-chunk.png)
 ]
-
+.panel[.panel-name[Map]
+```{r, warning=FALSE, message=FALSE}
+library(leaflet)
+leaflet() %>% addTiles() %>% setView(lng = 40.489673, lat = 9.1450, zoom = 3)
+```
 ]
-
+]
 
 ---
 
@@ -656,7 +668,7 @@ output:
 ] 
 
 .panel[.panel-name[YAML 2]
-More options for output `xaringan::moon_reader`
+More options for output <span style="color:red">`xaringan::moon_reader`</span>
 ```{r, eval=FALSE, echo=TRUE}
     nature: 
       highlightStyle: github   # highlighting syntax for code
@@ -698,6 +710,7 @@ More options for output `xaringan::moon_reader`
 /* colored to white for slides that have both
    the .title-slide and .inverse classes.*/
 .title-slide .inverse .remark-slide-content {
+
   background-color: #ffffff;
   color: #ffffff; /* Set the text color to white */
 }
@@ -766,7 +779,8 @@ datatable(iris, options = list(pageLength = 10))
 ---
 
 class: inverse
-background-image: url(https://media.giphy.com/media/cSiauzNn8OBLGq7Y1C/giphy.gif)
+
+background-image: url("img/thank you.jpg")
 background-size: cover
 
 
@@ -778,11 +792,23 @@ to_pptx(from = "Slide.html",
   keep_intermediates = TRUE)
 ```
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=FALSE}
 library(renderthis)
 to_pdf( "Slide.html",
   complex_slides = TRUE,
   delay = 1,
   keep_intermediates = TRUE)
 ```
+
+
+```{r share-again, echo=FALSE}
+xaringanExtra::use_share_again()
+```
+
+```{r style-share-again, echo=FALSE}
+xaringanExtra::style_share_again(
+  share_buttons = c("twitter", "linkedin", "email")
+)
+```
+
 
