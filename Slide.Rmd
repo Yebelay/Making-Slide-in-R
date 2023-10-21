@@ -812,7 +812,7 @@ background-image: url("img/thank you.jpg")
 background-size: cover
 
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=FALSE, warning=FALSE, warning=FALSE}
 library(renderthis)
 to_pptx(from = "Slide.html",
   complex_slides = TRUE,
@@ -820,7 +820,8 @@ to_pptx(from = "Slide.html",
   keep_intermediates = TRUE)
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+
+```{r, echo=FALSE, eval=FALSE, warning=FALSE, warning=FALSE}
 library(renderthis)
 to_pdf( "Slide.html",
   complex_slides = TRUE,
